@@ -309,7 +309,56 @@ layout.setVerticalGroup(
         // TODO add your handling code here:
     }//GEN-LAST:event_OnCreate
 
-   //JButton performed action
+   // Jbutton performed action src//issue.book.java
+ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(t2.getText().equals("")) 
+            JOptionPane.showMessageDialog(this,"मान ना मान मैं तेरा मेहमान\nama yaar pehle registration to karwao");
+        else
+        {
+                try
+                    {
+                        connect();
+                        query="select * from books where BookId='"+t3.getText()+"';";
+                        
+                        rs=stmt.executeQuery(query); 
+                        rs.next();
+                        if(t6.getText().equals("YES"))
+                        {
+                            query="insert into issue values('"+t1.getText()+"','"+t2.getText()+"','"+t3.getText()+"','"+t4.getText()+"','"+Address+"','"+t4.getText()+"');";
+                            
+                            stmt.executeUpdate(query);
+                            JOptionPane.showMessageDialog(this,"Book with id = "+t3.getText()+" has been issued to "+t2.getText());
+                            query="update books set Available='NO' where BookId='"+t3.getText()+"';";
+                            stmt.executeUpdate(query);
+                            
+                            
+                        }
+                        if(t6.getText().equals("NO"))
+                        {
+                            JOptionPane.showMessageDialog(this,"Book with this id is not available currently");
+                        }
+                        if(t6.getText().equals(""))
+                        {
+                            JOptionPane.showMessageDialog(this,"There is no book in the library with this id");
+                        }
+                        
+                            t4.setText("");
+                            t1.setText("");
+                            t2.setText("");
+                            t3.setText("");
+                            t6.setText("");
+                        disconnect();
+
+                    }
+                    catch(SQLException e)
+                    {
+                        if(e.getErrorCode()==1062)
+                        JOptionPane.showMessageDialog(this,"A student can only get a single book from library at a time ");
+                    }
+                }
+                
+                
+    }
    
    
    
