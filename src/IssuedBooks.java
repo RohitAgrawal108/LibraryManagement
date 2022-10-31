@@ -188,7 +188,31 @@ layout.setVerticalGroup(
 
     
 
-    // jbutton action performed function
+   // jbuttonactionperformed function src/issueedbook.java
+
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MainLayer mn=new MainLayer();
+        mn.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void c1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c1ActionPerformed
+        if(c1.getSelectedItem()=="Science")
+        {
+            c2.removeAllItems();
+            c2.addItem("Select Class");c2.addItem("FYBScCS");c2.addItem("SYBScCS");c2.addItem("TYBScCS");
+        }
+        if(c1.getSelectedItem()=="Arts")
+        {
+            c2.removeAllItems();
+            c2.addItem("Select Class");c2.addItem("FYBA");c2.addItem("SYBA");c2.addItem("TYBA");
+        }
+        if(c1.getSelectedItem()=="Commerce")
+        {
+            c2.removeAllItems();
+            c2.addItem("Select Class");c2.addItem("FYBCom");c2.addItem("SYBCom");c2.addItem("TYBCom");
+        }
+    }
 
 
     
