@@ -244,7 +244,37 @@ layout.setHorizontalGroup(
        this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    //Jbutton action performed
+    // Jbutton action performed src/registerstudent.java
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(t1.getText().equals(""))
+            JOptionPane.showMessageDialog(this,"Please enter StudentId");
+        else if(t2.getText().equals(""))
+            JOptionPane.showMessageDialog(this,"Please enter Student Name");
+        else if(c1.getSelectedItem()=="Select Stream")
+            JOptionPane.showMessageDialog(this,"Please select stream");
+        else if(c2.getSelectedItem()=="Select Class")
+            JOptionPane.showMessageDialog(this,"Please select class");
+        else if(a1.getText().equals(""))
+            JOptionPane.showMessageDialog(this,"Please enter Address"); 
+        else
+        {
+        connect();
+       try
+       {
+       query="insert into student values('"+t1.getText()+"','"+t2.getText()+"','"+c1.getSelectedItem()+"','"+c2.getSelectedItem()+"','"+a1.getText()+"');";
+       stmt.executeUpdate(query);
+       JOptionPane.showMessageDialog(this,"Thank you "+t1.getText()+"\nYou are registered now");
+        
+        }
+        catch(SQLException e)
+        {
+            if(e.getErrorCode()==1062)
+                JOptionPane.showMessageDialog(this,"StudentId is a primary key, duplicate entry is not allowed\nIt should be unique");
+            else
+                JOptionPane.showMessageDialog(this,"connection error");
+        }
+        }
+    }
     
     
     //GEN-LAST:event_jButton1ActionPerformed
